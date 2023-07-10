@@ -1,50 +1,39 @@
+import React, { useEffect, useState } from 'react';
+import { View, Text } from 'react-native';
+import SplashScreen from './SplashScreen';
+import WelcomeScreen from './WelcomeScreen';
+import LastScreen from './LastScreen';
 
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
+const App = () => {
+  const [isLoading, setIsLoading] = useState(true);
+  const [currentScreen, setCurrentScreen] = useState('Splash');
 
-export default function SplashPage() {
-  return (
-    <View style={styles.container}>
-      <View style={styles.background} />
-      <Image
-        source={require('./assets/TasteMate.png')}
-        style={styles.image}
-        resizeMode="contain"
-      />
-      <StatusBar style="auto" />
-      <Text style={styles.text}>TasteMate</Text>
-    </View>
-  );
-}
+  useEffect(() => {
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); // Wait for 2000 milliseconds (2 seconds) for the splash screen
+  }, []);
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  text: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-  image: {
-    width: 200,
-    height: 200,
-    position: 'relative',
-    top: 10, 
-  },
-  background: {
-    position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '25%', 
-    backgroundColor: 'rgba(252, 122, 75, 0.8)',
-    transform: [
-      { rotate: '-15deg' }, 
-      { scaleX: 1.5 }, 
-    ],
-  },
-});
+  useEffect(() => {
+    if (!isLoading) {
+      setCurrentScreen('Welcome');
+    }
+  }, [isLoading]);
 
+  const renderScreen = () => {
+    switch (currentScreen) {
+      case 'Splash':
+        return <SplashScreen />;
+      case 'Welcome':
+        return <WelcomeScreen />;
+      case 'Last':
+        return <LastScreen />;
+      default:
+        return null;
+    }
+  };
+
+  return <View style={{ flex: 1 }}>{renderScreen()}</View>;
+};
+
+export default App;
