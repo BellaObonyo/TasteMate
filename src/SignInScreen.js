@@ -1,21 +1,21 @@
-import React from 'react';
-import { View, Text, TextInput, Image, TouchableOpacity, StyleSheet } from 'react-native';
-import { LinearGradient } from 'expo-linear-gradient';
+import React from "react";
+import { View,Text,TextInput,TouchableOpacity,StyleSheet,} from "react-native";
+import { LinearGradient } from "expo-linear-gradient";
+import { SvgUri } from "react-native-svg";
 
 
-const LastScreen = () => {
+const SignInScreen = () => {
   return (
     <View style={styles.container}>
       <Text style={styles.message}>Sign In</Text>
       <Text style={styles.phoneNumberLabel}>Your phone number</Text>
       <View style={styles.form}>
-        <Image source={require('../assets/kenya.svg')} style={styles.logo} />
-        <TextInput style={styles.phoneNumberInput} placeholder="Enter phone number" />
+      <SvgUri uri={require("../assets/kenya.svg")} width={200} height={200} />
+        <TextInput
+          style={styles.phoneNumberInput}  placeholder="Enter phone number"/>
       </View>
       <LinearGradient
-        colors={['#ff555f', '#ffde17']}
-        style={styles.signInButton}
-      >
+        colors={["#ff555f", "#ffde17"]}  style={styles.signInButton}>
         <TouchableOpacity>
           <Text style={styles.signInText}>Sign In</Text>
         </TouchableOpacity>
@@ -27,23 +27,23 @@ const LastScreen = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: "#fff",
     padding: 20,
   },
   message: {
     fontSize: 24,
-    fontWeight: 'bold',
-    textAlign: 'left',
+    fontWeight: "bold",
+    textAlign: "left",
   },
   phoneNumberLabel: {
     fontSize: 18,
-    fontWeight: 'bold',
-    textAlign: 'left',
+    fontWeight: "bold",
+    textAlign: "left",
     marginTop: 20,
   },
   form: {
-    flexDirection: 'row',
-    alignItems: 'center',
+    flexDirection: "row",
+    alignItems: "center",
     marginTop: 10,
   },
   logo: {
@@ -61,16 +61,16 @@ const styles = StyleSheet.create({
   signInButton: {
     borderRadius: 5,
     marginTop: 20,
-    alignSelf: 'stretch',
+    alignSelf: "stretch",
     paddingVertical: 10,
     paddingHorizontal: 20,
   },
   signInText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontWeight: 'bold',
-    textAlign: 'center',
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
 
-export default LastScreen;
+export default SignInScreen;

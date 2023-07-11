@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
 import SplashScreen from './src/SplashScreen';
 import WelcomeScreen from './src/WelcomeScreen';
-import LastScreen from './src/LastScreen';
+import SignInScreen from './src/SignInScreen';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,7 +21,7 @@ const App = () => {
   }, [isLoading]);
 
   const handleSwipeRight = () => {
-    setCurrentScreen('Last');
+    setCurrentScreen('SignIn');
   };
 
   const renderScreen = () => {
@@ -30,8 +30,8 @@ const App = () => {
         return <SplashScreen />;
       case 'Welcome':
         return <WelcomeScreen onSwipeRight={handleSwipeRight} />;
-      case 'Last':
-        return <LastScreen />;
+      case 'SignIn':
+        return <SignInScreen />;
       default:
         return null;
     }
