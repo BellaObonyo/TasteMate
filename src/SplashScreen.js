@@ -1,52 +1,48 @@
+import React from 'react';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, Image } from 'react-native';
-
-export default function SplashScreen() {
+const SplashScreen = () => {
   return (
     <View style={styles.container}>
-      <View style={styles.background} />
-      <Image
-        source={require('./assets/TasteMate.png')}
-        style={styles.image}
-        resizeMode="contain"
-      />
-      <StatusBar style="auto" />
-      <Text style={styles.text}>TasteMate</Text>
+      <View style={styles.background}>
+        <Image source={require('../assets/TasteMate.png')} style={styles.logoImage} />
+      </View>
+      <Text style={styles.logo}>TasteMate</Text>
+      <Text style={styles.subtitle}>Loading...</Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // backgroundColor: '#fff',
-    alignItems: 'center',
     justifyContent: 'center',
-  },
-  text: {
-    fontSize: 24,
-    marginBottom: 20,
-  },
-  image: {
-    width: 200,
-    height: 200,
-    position: 'relative',
-    top: 10, 
+    alignItems: 'center',
+    backgroundColor: '#fff',
   },
   background: {
+    width: 150,
+    height: 150,
+    borderRadius: 75,
+    backgroundColor: 'yellow',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  logoImage: {
+    width: 100,
+    height: 100,
+    resizeMode: 'contain',
+  },
+  logo: {
+    fontSize: 32,
+    fontWeight: 'bold',
+    marginTop: 20,
     position: 'absolute',
-    top: 0,
-    left: 0,
-    width: '100%',
-    height: '25%', 
-    // backgroundColor: 'rgba(252, 122, 75, 0.8)',
-    transform: [
-      { rotate: '-15deg' }, 
-      { scaleX: 1.5 }, 
-    ],
+    top: 200,
+  },
+  subtitle: {
+    fontSize: 16,
   },
 });
 
-
-
+export default SplashScreen;

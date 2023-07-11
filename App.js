@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text } from 'react-native';
-import SplashScreen from './SplashScreen';
-import WelcomeScreen from './WelcomeScreen';
-import LastScreen from './LastScreen';
+import SplashScreen from './src/SplashScreen';
+import WelcomeScreen from './src/WelcomeScreen';
+import LastScreen from './src/LastScreen';
 
 const App = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -11,7 +11,7 @@ const App = () => {
   useEffect(() => {
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000); // Wait for 2000 milliseconds (2 seconds) for the splash screen
+    }, 100); // Wait for 200 milliseconds (0.2 seconds) for the splash screen
   }, []);
 
   useEffect(() => {
@@ -20,12 +20,16 @@ const App = () => {
     }
   }, [isLoading]);
 
+  const handleSwipeRight = () => {
+    setCurrentScreen('Last');
+  };
+
   const renderScreen = () => {
     switch (currentScreen) {
       case 'Splash':
         return <SplashScreen />;
       case 'Welcome':
-        return <WelcomeScreen />;
+        return <WelcomeScreen onSwipeRight={handleSwipeRight} />;
       case 'Last':
         return <LastScreen />;
       default:
