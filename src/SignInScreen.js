@@ -1,8 +1,6 @@
 import React from "react";
-import { View,Text,TextInput,TouchableOpacity,StyleSheet,} from "react-native";
+import { View, Text, TextInput, TouchableOpacity, StyleSheet, Image } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { SvgUri } from "react-native-svg";
-
 
 const SignInScreen = () => {
   return (
@@ -10,12 +8,10 @@ const SignInScreen = () => {
       <Text style={styles.message}>Sign In</Text>
       <Text style={styles.phoneNumberLabel}>Your phone number</Text>
       <View style={styles.form}>
-      <SvgUri uri={require("../assets/kenya.svg")} width={200} height={200} />
-        <TextInput
-          style={styles.phoneNumberInput}  placeholder="Enter phone number"/>
+        <Image source={require("../assets/icons-kenya.png")} style={styles.logo} />
+        <TextInput style={styles.phoneNumberInput} placeholder="Enter phone number" />
       </View>
-      <LinearGradient
-        colors={["#ff555f", "#ffde17"]}  style={styles.signInButton}>
+      <LinearGradient colors={["#ff555f", "#ffde17"]} style={styles.signInButton}>
         <TouchableOpacity>
           <Text style={styles.signInText}>Sign In</Text>
         </TouchableOpacity>

@@ -1,6 +1,5 @@
 import React from "react";
-import { SvgUri } from "react-native-svg";
-import { View, Text, StyleSheet, PanResponder } from "react-native";
+import { View, Text, StyleSheet, PanResponder, Image } from "react-native";
 
 const WelcomeScreen = ({ onSwipeRight }) => {
   const panResponder = PanResponder.create({
@@ -14,7 +13,7 @@ const WelcomeScreen = ({ onSwipeRight }) => {
 
   return (
     <View style={styles.container} {...panResponder.panHandlers}>
-      <SvgUri uri={require("../assets/welcome.svg")} width={200} height={200} />
+      <Image source={require("../assets/welcome.png")} style={styles.image} />
       <Text style={styles.welcomeMessage}>Welcome to TasteMate</Text>
       <Text style={styles.introMessage}>
         Hi, I'm here to help you find and try any recipes that you want.
@@ -29,6 +28,10 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#fff",
+  },
+  image: {
+    width: 200,
+    height: 200,
   },
   welcomeMessage: {
     fontSize: 24,
